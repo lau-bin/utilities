@@ -1,4 +1,4 @@
-<h>Temporal place where i place some command / code snippets</h>
+<h1>Temporal place where i place some command / code snippets</h1>
 
-<h1>Run notification every 30' for the currently logged user (not tested with more than one at a single time), works in system wide crontab</h1>
+<h3>Run notification every 30' for the currently logged user (not tested with more than one at a single time), works in system wide crontab</h3>
 <p>*/30 * * * * root export CUSTOM_USER_ZENITY=$(w -h -s -f | sed 's/\([^ ]*\).*/\1/') && sudo su $CUSTOM_USER_ZENITY -c "export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u $CUSTOM_USER_ZENITY)/bus && export DISPLAY=$(w -h -s -f | sed 's/[^ ]*[^:]*\([^ ]*\).*/\1/') && zenity --notification --text \"Walk a little, showing each 30\'\"" 2>&1 | /usr/bin/logger -t cron-notif</p>
